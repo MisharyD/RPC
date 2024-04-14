@@ -1,3 +1,74 @@
+document.addEventListener("DOMContentLoaded",() =>
+{
+    document.querySelector("#play").addEventListener("click",start)
+})
+
+function start()
+{
+    let container = document.querySelector(".container");
+    container.innerHTML = `
+    <h2> Choose: </h2>
+    <div class = "button-container">
+        <div> 
+            <img class = "button rock" src = "rock.png" alt = "rock">
+            <div> Rock </div> 
+        </div>
+        <div>
+            <img class = "button paper" src = "paper.png" alt = "paper">
+            <div> Paper </div> 
+        </div>
+        <div>
+            <img class = "button scissor" src = "scissor.png" alt = "scissor">
+            <div> Scissor </div> 
+        </div>
+    </div>
+    `
+
+    Array.from(document.querySelectorAll(".button")).forEach(function(button){
+    button.addEventListener("click",showResult);
+})
+}
+
+//check winner and display the proper html
+function showResult(e)
+{
+    let plrChoice = e.target.getAttribute("src")
+    plrChoice = plrChoice.substring(0,plrChoice.indexOf("."));
+    
+    let cmpChoice = getComputerChoice();
+    let result = playRound(plrChoice,cmpChoice);
+
+    let resultSentence;
+    if(result == 1)
+        resultSentence = `You Won! ${plrChoice} beats ${cmpChoice}`
+    else if (result == 2)
+        resultSentence = `You Lost! ${cmpChoice} beats ${plrChoice}`
+    else
+        resultSentence = "Draw"
+
+    let container = document.querySelector(".container");
+    container.innerHTML = `
+    <div class = "result-container>
+        <div class = "player-choice">\
+            Your choice:
+            <img class = "${plrChoice}" src = "${plrChoice}.png" alt = "${plrChoice}">
+        </div>
+
+        <div class = "cmp-choice">
+            Computer choice:
+            <img class = "${cmpChoice}" src = "${cmpChoice}.png" alt = "${cmpChoice}">
+        </div>
+
+        <div class = "result">
+            ${resultSentence}
+        </div>
+    </div>
+    `
+    
+}
+
+
+
 function getComputerChoice()
 {
     let rng = Math.floor(1 + Math.random() * 3);
@@ -8,7 +79,7 @@ function getComputerChoice()
         case 2:
             return "paper";
         case 3:
-            return "scissors";
+            return "scissor";
     }
 }
 
@@ -16,8 +87,8 @@ function getComputerChoice()
 function playRound(plrChoice, cmpChoice)
 {
     //player wins
-    if(plrChoice == "rock" && cmpChoice == "scissors" ||
-    plrChoice == "scissors" && cmpChoice == "paper" ||
+    if(plrChoice == "rock" && cmpChoice == "scissor" ||
+    plrChoice == "scissor" && cmpChoice == "paper" ||
     plrChoice == "paper" && cmpChoice == "rock")
         return 1;
     //draw
