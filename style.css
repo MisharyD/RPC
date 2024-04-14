@@ -1,13 +1,13 @@
 body
 {
-    background-color: #5a989e;
+    background-color: #215d68;
     text-align: center;
     display: flex;
     flex-direction: column;
 }
 .container
 {
-    background-color: #356b75; 
+    background-color: #276d74;
     align-self: center;
     width:1000px;
     height:500px;
@@ -28,15 +28,18 @@ div
     font-size:54px;
     margin:8px;
     font-weight: bolder;
+    color: white;
 }
 
 .play
 {
     align-self: center;
-    background-color: #5a989e;
+    background-color: #356b75;
     font-size:42px;
     padding:16px 32px;
     border-radius: 25px;
+    border: 4px solid #02363f ;
+    cursor: grab;
 }
 
 
@@ -52,9 +55,10 @@ img
 {
     margin-top: 8px;
 }
-.button
+.img
 {
     cursor:grab;
+    border: 8px solid #02363f;
 }
 
 .choices-container

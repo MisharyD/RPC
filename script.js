@@ -10,16 +10,13 @@ function start()
     <div> Choose: </div>
     <div class = "button-container">
         <div> 
-            <img class = "button rock" src = "rock.png" alt = "rock">
-            <div> Rock </div> 
+            <img class = "img button" src = "rock.png" alt = "rock">   
         </div>
         <div>
-            <img class = "button paper" src = "paper.png" alt = "paper">
-            <div> Paper </div> 
+            <img class = "img button" src = "paper.png" alt = "paper">    
         </div>
         <div>
-            <img class = "button scissors" src = "scissors.png" alt = "scissors">
-            <div> Scissors </div> 
+            <img class = "img button" src = "scissors.png" alt = "scissors"> 
         </div>
     </div>
     `
@@ -51,12 +48,12 @@ function showResult(e)
     <div class = "choices-container">
         <div class = "player-choice">
             <div>Your choice:</div>
-            <img class = "${plrChoice}" src = "${plrChoice}.png" alt = "${plrChoice}">
+            <img class = "img" src = "${plrChoice}.png" alt = "${plrChoice}">
         </div>
 
         <div class = "cmp-choice">
             <div> Computer choice: </div>
-            <img class = "${cmpChoice}" src = "${cmpChoice}.png" alt = "${cmpChoice}">
+            <img class = "img" src = "${cmpChoice}.png" alt = "${cmpChoice}">
         </div>
     </div>
     <div class = "result">
