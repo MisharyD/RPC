@@ -13,22 +13,59 @@ body
     height:500px;
     display: flex;
     flex-direction: column;
+    gap:1em;
+    justify-content: center;
+
 }
 
-#play
+div
 {
-    
+    font-size:42px;
 }
+
+.title
+{
+    font-size:54px;
+    margin:8px;
+    font-weight: bolder;
+}
+
+.play
+{
+    align-self: center;
+    background-color: #5a989e;
+    font-size:42px;
+    padding:16px 32px;
+    border-radius: 25px;
+}
+
 
 .button-container
 {
     display:flex;
     align-items: center;
-    gap:1em;
+    justify-content: center;
+    gap:2em;
 }
 
+img
+{
+    margin-top: 8px;
+}
 .button
 {
     cursor:grab;
+}
+
+.choices-container
+{
+    display: flex;
+    gap: 2em;
+    justify-content: space-around;
+}
+
+.choices-container
+{
+    font-size: 32px;
 }
 

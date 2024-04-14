@@ -1,13 +1,13 @@
 document.addEventListener("DOMContentLoaded",() =>
 {
-    document.querySelector("#play").addEventListener("click",start)
+    document.querySelector(".play").addEventListener("click",start)
 })
 
 function start()
 {
     let container = document.querySelector(".container");
     container.innerHTML = `
-    <h2> Choose: </h2>
+    <div> Choose: </div>
     <div class = "button-container">
         <div> 
             <img class = "button rock" src = "rock.png" alt = "rock">
@@ -18,18 +18,18 @@ function start()
             <div> Paper </div> 
         </div>
         <div>
-            <img class = "button scissor" src = "scissor.png" alt = "scissor">
-            <div> Scissor </div> 
+            <img class = "button scissors" src = "scissors.png" alt = "scissors">
+            <div> Scissors </div> 
         </div>
     </div>
     `
 
     Array.from(document.querySelectorAll(".button")).forEach(function(button){
     button.addEventListener("click",showResult);
-})
+    })
 }
 
-//check winner and display the proper html
+//show player and computer choice and show who won. also generate a button to play again
 function showResult(e)
 {
     let plrChoice = e.target.getAttribute("src")
@@ -40,32 +40,34 @@ function showResult(e)
 
     let resultSentence;
     if(result == 1)
-        resultSentence = `You Won! ${plrChoice} beats ${cmpChoice}`
+        resultSentence = `You Won! ${plrChoice} beats ${cmpChoice}.`
     else if (result == 2)
-        resultSentence = `You Lost! ${cmpChoice} beats ${plrChoice}`
+        resultSentence = `You Lost! ${cmpChoice} beats ${plrChoice}.`
     else
-        resultSentence = "Draw"
+        resultSentence = "Draw!"
 
     let container = document.querySelector(".container");
     container.innerHTML = `
-    <div class = "result-container>
-        <div class = "player-choice">\
-            Your choice:
+    <div class = "choices-container">
+        <div class = "player-choice">
+            <div>Your choice:</div>
             <img class = "${plrChoice}" src = "${plrChoice}.png" alt = "${plrChoice}">
         </div>
 
         <div class = "cmp-choice">
-            Computer choice:
+            <div> Computer choice: </div>
             <img class = "${cmpChoice}" src = "${cmpChoice}.png" alt = "${cmpChoice}">
         </div>
-
-        <div class = "result">
-            ${resultSentence}
-        </div>
     </div>
+    <div class = "result">
+        <div>${resultSentence}</div>
+    </div>
+    <button class = "play"> Play agian </button>
     `
-    
+    document.querySelector(".play").addEventListener("click",start);
 }
+
+
 
 
 
@@ -79,7 +81,7 @@ function getComputerChoice()
         case 2:
             return "paper";
         case 3:
-            return "scissor";
+            return "scissors";
     }
 }
 
@@ -87,8 +89,8 @@ function getComputerChoice()
 function playRound(plrChoice, cmpChoice)
 {
     //player wins
-    if(plrChoice == "rock" && cmpChoice == "scissor" ||
-    plrChoice == "scissor" && cmpChoice == "paper" ||
+    if(plrChoice == "rock" && cmpChoice == "scissors" ||
+    plrChoice == "scissors" && cmpChoice == "paper" ||
     plrChoice == "paper" && cmpChoice == "rock")
         return 1;
     //draw
